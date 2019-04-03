@@ -9,6 +9,7 @@ import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.MenuItem;
 import android.webkit.MimeTypeMap;
 import android.widget.Toast;
@@ -37,6 +38,7 @@ public class FileExplorerActivity extends AppCompatActivity implements FileDirec
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         mFiles = Arrays.asList(mRootDir.listFiles());
+        Log.d("total", String.valueOf(mFiles.size()));
         mFileDirAdapter = new FileDirectoryAdapter(mFiles, this);
         mRecyclerView.setAdapter(mFileDirAdapter);
 

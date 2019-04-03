@@ -2,6 +2,7 @@ package com.example.filemanager;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.io.File;
+import java.util.Arrays;
 import java.util.List;
 
 public class FileDirectoryAdapter extends RecyclerView.Adapter<FileDirectoryAdapter.MyViewHolder> {
@@ -33,6 +35,7 @@ public class FileDirectoryAdapter extends RecyclerView.Adapter<FileDirectoryAdap
         myViewHolder.mFileName.setText(currentFile.getName());
 
         if (currentFile.isDirectory()) {
+            myViewHolder.mTotalItemCounts.setText(String.valueOf(Arrays.asList(currentFile.listFiles()).size()) + " items");
             myViewHolder.mFileOrFolderImage.setImageResource(R.drawable.image_folder);
         } else if (currentFile.isFile()) {
             myViewHolder.mFileOrFolderImage.setImageResource(R.drawable.image_file);
